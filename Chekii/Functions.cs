@@ -1,4 +1,7 @@
-﻿using System;
+﻿/// Coded By github.com/Vexisz
+/// IF THIS DLL IS OBFUSCATED DELETE THE DLL BECAUSE IT MAY CONTAIN MODIFIED MALICIOUS CODE!
+using Leaf.xNet;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,12 +94,47 @@ namespace Chekii
             return result;
         }
         #endregion
-        //Picks a random value from list (not ready)
-        //public static string RandomPick()
-        //{
+        #region Webhook Hits Sender
+        /// <summary>
+        ///Feel free to customize this for your checker
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="content"></param>
+        /// Edit
+        public static void WebhookHitSender(string url,string content)
+        {
+            if(!url.Contains("https://discordapp.com/api/webhooks/"))
+                {
+                Console.WriteLine("URL IS NOT MATCHING THE WEBHOOK PATTERN!");
+            }
+            else
+            {
+                string data;
+                var req = new HttpRequest();
+                req.IgnoreProtocolErrors = true;
+                data = string.Concat(new string[] {
 
-        //}
+                "{",
+                "\"embeds\": [{",
+                $"\"title\": \"t\",",
+                "\"description\": \"**t: **" +"\\n **t:"  + " ** \",",
+                "\"color\":\"6784\",",
+                 "\"footer\": {",
+                "\"text\": \"t\",",
+                "\"thumbnail\": {",
+                "\"url\": \"https://pbs.twimg.com/media/DaooCaEU0AAdMFJ.jpg\"",
+                "}",
+                "}",
+               "}]",
+                "}"
+                    });
 
+                req.Post(url, data, "application/json").ToString();
+
+            }
+        }
+        #endregion
 
     }
 }
+///End of functions
