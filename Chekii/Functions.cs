@@ -5,6 +5,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Chekii
     public class Functions
     {
         private static string result;
+        public static ConcurrentQueue<string> Combox = new ConcurrentQueue<string>();
         #region Starts Threads
         public static void Threader(ThreadStart module)
         {
@@ -134,6 +136,7 @@ namespace Chekii
             }
         }
         #endregion
+        
 
     }
 }
